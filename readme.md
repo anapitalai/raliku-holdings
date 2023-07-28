@@ -1,3 +1,15 @@
+# Installing the runner
+- RUNNER_ALLOW_RUNASROOT=true ./config.sh --url https://github.com/anapitalai/raliku-holdings --token ABUMTLNWPT22Z3C727L3WSLEYNJEY
+- Default, react-node-runner, _work folder, default labels
+- ./svc.sh install
+Creating launch runner in /etc/systemd/system/actions.runner.anapitalai-raliku-holdings.react-node-runner.service
+- ./svh.sh install
+Run as user: 
+Run as uid: 0
+gid: 0
+Created symlink /etc/systemd/system/multi-user.target.wants/actions.runner.anapitalai-raliku-holdings.react-node-runner.service → /etc/systemd/system/actions.runner.anapitalai-raliku-holdings.react-node-runner.service.
+- ./svh.sh start
+
 # ProShop eCommerce Platform (v2)
 
 > eCommerce platform built with the MERN stack & Redux.
