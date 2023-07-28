@@ -3,7 +3,7 @@ name: Deployment
 on: push                    
 jobs:
   installs:
-    runs-on: self-runner    
+    runs-on: self-hosted    
     steps: 
     - name: Get code from local to gh runner
       uses: actions/checkout@v3
