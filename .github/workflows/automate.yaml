@@ -7,7 +7,7 @@ jobs:
     steps: 
     - name: Get code from local to gh runner
       uses: actions/checkout@v3
-    - name: ls  
+    - run: ls  
 #       uses: actions/setup-node@v3
 #       with:                             
 #         node-version: 18
