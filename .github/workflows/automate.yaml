@@ -8,7 +8,7 @@ jobs:
     - name: Get code from local to gh runner
       uses: actions/checkout@v3
     - name: CD into BE install deps
-      run: npm ci && cd ../frontend && npm ci
+      run: npm ci && cd frontend && npm ci
 #       with:                             
 #         node-version: 18
 #     - name: Install dependencies
