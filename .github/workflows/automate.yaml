@@ -8,20 +8,20 @@ jobs:
     steps: 
     - name: Get code from local to gh runner
       uses: actions/checkout@v3
-    - name: Install nodejs 18
-      uses: actions/setup-node@v3
-      with:                             
-        node-version: 18
-    - name: Install dependencies
-      run: npm ci
-    - name: Run build
-      run: npm run build && ls
+#     - name: Install nodejs 18
+#       uses: actions/setup-node@v3
+#       with:                             
+#         node-version: 18
+#     - name: Install dependencies
+#       run: npm ci
+#     - name: Run build
+#       run: npm run build && ls
 
-#     - name: Copy folder content recursively to remote VPS
-#       uses: garygrossgarten/github-action-scp@release
-#       with:
-#           local: /home/runner/work/raliku-holdings/
-#           remote: /root/git-clones
-#           host: ${{ secrets.HOST }}
-#           username: ${{ secrets.USER }}
-#           password: ${{ secrets.PASSWORD }}
+    - name: Copy folder content recursively to remote VPS
+      uses: garygrossgarten/github-action-scp@release
+      with:
+          local: /home/runner/work/raliku-holdings/
+          remote: /root/git-clones/raliku-holdings/
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
