@@ -3,12 +3,12 @@ name: Deployment
 on: push                    
 jobs:
   installs:
-    runs-on: self-hosted    
+    runs-on: ubuntu-latest    
     steps: 
     - name: Get code from local to gh runner
       uses: actions/checkout@v3
     - name: CD into BE install deps
-      run: cd backend && npm i && cd ../frontend && npm i
+      run: npm ci && cd ../frontend && npm ci
 #       with:                             
 #         node-version: 18
 #     - name: Install dependencies
