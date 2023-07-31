@@ -21,7 +21,17 @@ jobs:
       uses: garygrossgarten/github-action-scp@release
       with:
           local: /home/runner/work/raliku-holdings/
-          remote: /root/git-clones/raliku-holdings/
+          remote: /root/git-clones/
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
+  prep-deploy:
+    runs-on: self-hosted    
+    steps: 
+    - name: Get to the project dir
+      run: cd /root/git-clones/raliku-holdings
+    - name: install and build
+      run: npm ci
+    - name: install frontend deps
+      run: npm run build && npm run dev 
+
