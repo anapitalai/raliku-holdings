@@ -15,7 +15,7 @@ jobs:
     - name: Install dependencies
       run: cd frontend && npm ci
     - name: Run build
-      run: npm run build && ls dist
+      run: npm run build && pwd
 
     - name: Copy folder content recursively to remote VPS
       uses: garygrossgarten/github-action-scp@release
