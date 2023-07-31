@@ -7,8 +7,8 @@ jobs:
     steps: 
     - name: Get code from local to gh runner
       uses: actions/checkout@v3
-    - name: CD into BE install deps
-      run: npm ci && cd frontend && npm ci
+    - name: cd into frontend install dep and run build
+      run: cd frontend && npm ci && npm run build
 #       with:                             
 #         node-version: 18
 #     - name: Install dependencies
@@ -16,11 +16,11 @@ jobs:
 #     - name: Run build
 #       run: npm run build
 
-#     - name: Copy folder content recursively to remote VPS
-#       uses: garygrossgarten/github-action-scp@release
-#       with:
-#           local: dist
-#           remote: /var/www/www.taraka-uc.com/public_html/
-#           host: ${{ secrets.HOST }}
-#           username: ${{ secrets.USER }}
-#           password: ${{ secrets.PASSWORD }}
+    - name: Copy folder content recursively to remote VPS
+      uses: garygrossgarten/github-action-scp@release
+      with:
+          local: dist
+          remote: /root/git-clones
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
