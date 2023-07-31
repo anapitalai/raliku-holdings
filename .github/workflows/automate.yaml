@@ -15,12 +15,12 @@ jobs:
     - name: Install dependencies
       run: cd frontend && npm ci
     - name: Run build
-      run: npm run build && pwd
+      run: npm run build && ls
 
     - name: Copy folder content recursively to remote VPS
       uses: garygrossgarten/github-action-scp@release
       with:
-          local: ./frontend/dist
+          local: /home/runner/work/raliku-holdings/raliku-holdings
           remote: /root/git-clones
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
