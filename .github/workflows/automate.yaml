@@ -13,10 +13,11 @@ jobs:
           repository: 'raliku-holdings'
       
       - name: avaiable-repo
-        if: failure()
+        if: failure() || success()
         run: |
           rm raliku-holdings -R
-          uses: clone-repo 
+          
+    
              
         
       # - name: Access cloned repository content
