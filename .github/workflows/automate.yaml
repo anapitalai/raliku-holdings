@@ -17,6 +17,7 @@ jobs:
           cd raliku-holdings
           npm ci
           npm run build
+          pwd
       - name: work with artifacts
         uses: actions/upload-artifact@v3
         with: 
