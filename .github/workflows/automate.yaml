@@ -10,10 +10,13 @@ jobs:
         with:
           owner: 'anapitalai'
           repository: 'raliku-holdings'
-      - name: Access cloned repository content
-        run: mv raliku-holdings /root/git-clones/
-      - name: cd to the dir    
-        run:  cd /root/git-clones/raliku-holdings
+          run: |
+            if: raliku-holdings
+            echo 'File is avaible'
+      # - name: Access cloned repository content
+      #   run: mv raliku-holdings /root/git-clones/
+      # - name: cd to the dir    
+      #   run:  cd /root/git-clones/raliku-holdings
           
   #         npm ci
   #         npm run build
