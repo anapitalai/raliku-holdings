@@ -13,7 +13,7 @@ jobs:
           repository: 'raliku-holdings'
       
       - name: avaiable-repo
-        if: step.repo.outputs == 'raliku-holdings'
+        if: steps.repo.outputs == 'raliku-holdings'
         run: rm -R raliku-holdings       
         
       # - name: Access cloned repository content
