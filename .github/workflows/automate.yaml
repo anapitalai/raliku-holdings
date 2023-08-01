@@ -13,7 +13,7 @@ jobs:
       - name: Clone GuillaumeFalourd/poc-github-actions PUBLIC repository
         uses: GuillaumeFalourd/clone-github-repo-action@v2
         with:
-          owner: 'AloisNapitalai'
+          owner: 'anapitalai'
           repository: 'raliku-holdings'
       
       - name: Access cloned repository content
