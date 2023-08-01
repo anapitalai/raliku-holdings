@@ -11,7 +11,6 @@ jobs:
           owner: 'anapitalai'
           repository: 'raliku-holdings'
           run: |
-            if: raliku-holdings
             echo 'File is avaible'
       # - name: Access cloned repository content
       #   run: mv raliku-holdings /root/git-clones/
