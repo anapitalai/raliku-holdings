@@ -12,7 +12,7 @@ jobs:
           repository: 'raliku-holdings'
       - name: Access cloned repository content
         run: |
-          mv /root/action_runners/_work/raliku-holdings /root/git-clones/
+          mv raliku-holdings /root/git-clones/
   #         npm ci
   #         npm run build
   #         pwd
