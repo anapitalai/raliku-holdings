@@ -17,16 +17,22 @@ jobs:
           cd raliku-holdings
           npm ci
           npm run build
+      - name: work with artifacts
+        uses: actions/upload-artifact@v3
+        with: 
+          name: artifact-files
+          path: raliku-holdings
+        
           
           
-  vps-operations:
-    needs: repo-ubuntu
-    runs-on: self-hosted
-    steps: 
-      - name: copy code into VPS
-        uses: actions/checkout@v3
-      - name: some if node_modules is there 
-        run: ls
+  # vps-operations:
+  #   needs: repo-ubuntu
+  #   runs-on: self-hosted
+  #   steps: 
+  #     - name: copy code into VPS
+  #       uses: actions/checkout@v3
+  #     - name: some if node_modules is there 
+  #       run: ls
       
         
 ##/root/actions-runner/_work/raliku-holdings/raliku-holdings
