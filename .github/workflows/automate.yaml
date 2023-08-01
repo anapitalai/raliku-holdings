@@ -13,8 +13,11 @@ jobs:
           repository: 'raliku-holdings'
       
       - name: avaiable-repo
-        if: steps.repo.outputs == '!true'
-        run: rm -R raliku-holdings       
+        if: failure()
+        run: |
+          cd raliku-holdings
+          rm *
+             
         
       # - name: Access cloned repository content
       #   run: mv raliku-holdings /root/git-clones/
