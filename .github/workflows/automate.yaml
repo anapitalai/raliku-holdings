@@ -4,8 +4,7 @@ name: Clone Public Repository Workflow
 on:
   push
 
-jobs:
-    
+jobs:    
   job-public-repo-ubuntu:
     runs-on: ubuntu-latest
     steps:
@@ -29,9 +28,12 @@ jobs:
       - name: copy code into VPS
         uses: actions/checkout@v3
       - name: sek tasol
-        run: pwd && ls
+        run: npm ci
+      - name: front-end build
+        run: npm run build
         
-
+        
+##/root/actions-runner/_work/raliku-holdings/raliku-holdings
 # name: Deployment
 
 
