@@ -3,7 +3,7 @@ name: Clone to VPS and run all logics
 on: push
 jobs:
   repo-ubuntu:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Clone GuillaumeFalourd/poc-github-actions PUBLIC repository
         uses: GuillaumeFalourd/clone-github-repo-action@v2
@@ -12,24 +12,24 @@ jobs:
           repository: 'raliku-holdings'
       - name: Access cloned repository content
         run: |
-          cd raliku-holdings
-          npm ci
-          npm run build
-          pwd
-      - name: work with artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: artifact-build-files
-          path: /home/runner/work/raliku-holdings/raliku-holdings/raliku-holdings/frontend/build
+          cd raliku-holdings-app
+  #         npm ci
+  #         npm run build
+  #         pwd
+  #     - name: work with artifacts
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: artifact-build-files
+  #         path: /home/runner/work/raliku-holdings/raliku-holdings/raliku-holdings/frontend/build
 
-  vps-operations:
-    needs: repo-ubuntu
-    runs-on: self-hosted
-    steps:
-      - name: Get artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: artifact-build-files
+  # vps-operations:
+  #   needs: repo-ubuntu
+  #   runs-on: self-hosted
+  #   steps:
+  #     - name: Get artifacts
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: artifact-build-files
           
       # - name: copy code into VPS
       #   uses: actions/checkout@v3
