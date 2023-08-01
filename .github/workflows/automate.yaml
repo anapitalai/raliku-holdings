@@ -1,37 +1,33 @@
 
-name: Clone Public Repository Workflow
+name: Clone to VPS and run all logics
 
 on:
   push
-
 jobs:    
-  job-public-repo-ubuntu:
+  repo-ubuntu:
     runs-on: ubuntu-latest
-    steps:
-      
+    steps:    
       - name: Clone GuillaumeFalourd/poc-github-actions PUBLIC repository
         uses: GuillaumeFalourd/clone-github-repo-action@v2
         with:
           owner: 'anapitalai'
-          repository: 'raliku-holdings'
-      
+          repository: 'raliku-holdings'     
       - name: Access cloned repository content
         run: |
-          echo "ROOT"
-          ls -la
-          echo "CLONED REPO"
           cd raliku-holdings
-          ls -la
+          npm ci
+          npm run build
+          
+          
   vps-operations:
+    needs: repo-ubuntu
     runs-on: self-hosted
     steps: 
       - name: copy code into VPS
         uses: actions/checkout@v3
-      - name: sek tasol
-        run: npm ci
-      - name: front-end build
-        run: npm run build
-        
+      - name: some if node_modules is there 
+        run: ls
+      
         
 ##/root/actions-runner/_work/raliku-holdings/raliku-holdings
 # name: Deployment
