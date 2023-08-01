@@ -13,6 +13,8 @@ jobs:
       - name: Access cloned repository content
         run: |
           mv raliku-holdings /root/git-clones/
+          cd /root/git-clones/raliku-holdings
+          ls
   #         npm ci
   #         npm run build
   #         pwd
