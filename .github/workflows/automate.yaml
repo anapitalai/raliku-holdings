@@ -7,11 +7,15 @@ jobs:
     steps:
       - name: Clone GuillaumeFalourd/poc-github-actions PUBLIC repository
         uses: GuillaumeFalourd/clone-github-repo-action@v2
+        id: repo
         with:
           owner: 'anapitalai'
           repository: 'raliku-holdings'
-          run: |
-            echo 'File is avaible'
+      
+      - name: avaiable-repo
+        if: step.repo.outputs == 'raliku-holdings'
+        run: rm -R raliku-holdings       
+        
       # - name: Access cloned repository content
       #   run: mv raliku-holdings /root/git-clones/
       # - name: cd to the dir    
