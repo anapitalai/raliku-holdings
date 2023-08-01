@@ -15,8 +15,7 @@ jobs:
       - name: avaiable-repo
         if: failure()
         run: |
-          cd raliku-holdings
-          rm *
+          rm raliku-holdings -R
              
         
       # - name: Access cloned repository content
