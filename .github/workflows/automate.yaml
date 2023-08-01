@@ -1,4 +1,6 @@
+
 name: Deployment
+
 
 on: push                    
 jobs:
@@ -7,20 +9,29 @@ jobs:
     steps: 
     - name: Get code from local to gh runner
       uses: actions/checkout@v3
-    - name: Install nodejs 18
-      uses: actions/setup-node@v3
-      with:                             
-        node-version: 18
-    - name: Install dependencies
-      run: npm ci
-    - name: Run build
-      run: npm run build
+#     - name: Install nodejs 18
+#       uses: actions/setup-node@v3
+#       with:                             
+#         node-version: 18
+#     - name: Install dependencies
+#       run: npm ci
+#     - name: Run build
+#       run: npm run build && ls
 
     - name: Copy folder content recursively to remote VPS
       uses: garygrossgarten/github-action-scp@release
       with:
-          local: dist
-          remote: /var/www/www.taraka-uc.com/public_html/
+          local: /home/runner/work/raliku-holdings/
+          remote: /root/git-clones/
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
+  prep-deploy:
+    runs-on: self-hosted    
+    steps: 
+    - name: Get to the project dir
+      run: cd /root/git-clones/raliku-holdings
+    - name: install and build
+      run: npm ci
+    - name: install frontend deps
+      run: npm run build && npm run dev 
