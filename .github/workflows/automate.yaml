@@ -1,17 +1,15 @@
-
 name: Clone to VPS and run all logics
 
-on:
-  push
-jobs:    
+on: push
+jobs:
   repo-ubuntu:
     runs-on: ubuntu-latest
-    steps:    
+    steps:
       - name: Clone GuillaumeFalourd/poc-github-actions PUBLIC repository
         uses: GuillaumeFalourd/clone-github-repo-action@v2
         with:
           owner: 'anapitalai'
-          repository: 'raliku-holdings'     
+          repository: 'raliku-holdings'
       - name: Access cloned repository content
         run: |
           cd raliku-holdings
@@ -20,34 +18,33 @@ jobs:
           pwd
       - name: work with artifacts
         uses: actions/upload-artifact@v3
-        with: 
-          name: artifact-files
+        with:
+          name: artifact-build-files
           path: /home/runner/work/raliku-holdings/raliku-holdings/raliku-holdings/frontend/build
-        
+
+  vps-operations:
+    needs: repo-ubuntu
+    runs-on: self-hosted
+    steps:
+      - name: Get artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: artifact-build-files
           
-          
-  # vps-operations:
-  #   needs: repo-ubuntu
-  #   runs-on: self-hosted
-  #   steps: 
-  #     - name: copy code into VPS
-  #       uses: actions/checkout@v3
-  #     - name: some if node_modules is there 
-  #       run: ls
-      
-        
+      # - name: copy code into VPS
+      #   uses: actions/checkout@v3
+      # - name: some if node_modules is there
+      #   run: ls
 ##/root/actions-runner/_work/raliku-holdings/raliku-holdings
 # name: Deployment
 
-
-# on: push                    
+# on: push
 # jobs:
 #   installs:
-#     runs-on: ubuntu-latest    
-#     steps: 
+#     runs-on: ubuntu-latest
+#     steps:
 #     - name: Get code from local to gh runner
 #       uses: actions/checkout@v3
-
 
 #     - name: Copy folder content recursively to remote VPS
 #       uses: garygrossgarten/github-action-scp@release
@@ -58,11 +55,11 @@ jobs:
 #           username: ${{ secrets.USER }}
 #           password: ${{ secrets.PASSWORD }}
 #   prep-deploy:
-#     runs-on: self-hosted    
-#     steps: 
+#     runs-on: self-hosted
+#     steps:
 #     - name: Get to the project dir
 #       run: cd /root/git-clones/raliku-holdings
 #     - name: install and build
 #       run: npm ci
 #     - name: install frontend deps
-#       run: npm run build && npm run dev 
+#       run: npm run build && npm run dev
