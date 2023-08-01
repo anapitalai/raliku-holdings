@@ -23,7 +23,14 @@ jobs:
           echo "CLONED REPO"
           cd raliku-holdings
           ls -la
-
+  vps-operations:
+    runs-on: self-hosted
+    steps: 
+      - name: copy code into VPS
+        uses: actions/checkout@v3
+      - name: sek tasol
+        run: pwd && ls
+        
 
 # name: Deployment
 
