@@ -5,7 +5,7 @@ jobs:
   repo-ubuntu:
     runs-on: self-hosted
     steps:
-      - name: Clone GuillaumeFalourd/poc-github-actions PUBLIC repository
+      - name: clone-repo
         uses: GuillaumeFalourd/clone-github-repo-action@v2
         id: repo
         with:
@@ -16,6 +16,7 @@ jobs:
         if: failure()
         run: |
           rm raliku-holdings -R
+          uses: clone-repo 
              
         
       # - name: Access cloned repository content
