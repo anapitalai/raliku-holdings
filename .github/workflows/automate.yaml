@@ -19,7 +19,8 @@ jobs:
     needs: repo-ubuntu
     runs-on: ubuntu-latest    
     steps: 
-    - name: Get code from local to gh runner
+    - name: collect-code-runner
+      id: collect-runner
       uses: actions/checkout@v3
     - name: Install nodejs 18
       uses: actions/setup-node@v3
@@ -28,7 +29,11 @@ jobs:
     - name: Install dependencies
       run: |
         npm run build
-            
+    - name: avaiable-repo
+      if: steps.collect-runner.outcome == 'failure'
+      run: |
+          rm raliku-holdings -R
+
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
