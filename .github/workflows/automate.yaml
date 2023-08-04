@@ -26,18 +26,14 @@ jobs:
       with:                             
         node-version: 18
     - name: Install dependencies
-      run: npm ci
-
-
-
-    - name: Copy folder content recursively to remote VPS
-      uses: garygrossgarten/github-action-scp@release
+      run: |
+        npm run build
+            
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
       with:
-          local: dist
-          remote: /var/www/www.taraka-uc.com/public_html/
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          password: ${{ secrets.PASSWORD }}
+        name: artifact-build-files
+        # path: /home/runner/work/raliku-holdings/raliku-holdings/raliku-holdings/frontend/build
 
 
 
