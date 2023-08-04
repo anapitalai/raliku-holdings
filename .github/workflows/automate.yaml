@@ -29,6 +29,7 @@ jobs:
        ls -lah
        npm ci
        npm run build    
+  
       # - name: Get artifacts
       #   uses: actions/download-artifact@v3
       #   with:
