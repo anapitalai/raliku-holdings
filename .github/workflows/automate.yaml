@@ -2,6 +2,14 @@ name: Clone to VPS and run all logics
 
 on: push
 jobs:
+  # build:
+  #   runs-on: ubuntu-latest
+  #   steps: 
+  #   - name: check project files
+  #     uses: actions/checkout@v3
+  #     run: npm run build
+
+
 
   repo-ubuntu:
     runs-on: self-hosted
@@ -12,9 +20,7 @@ jobs:
         with:
           owner: 'anapitalai'
           repository: 'raliku-holdings'
-          run: |
-            cd raliku-holdings
-            npm run build
+
 
       - name: avaiable-repo
         if: failure() || success()
