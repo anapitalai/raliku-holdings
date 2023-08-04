@@ -5,6 +5,8 @@ jobs:
   repo-ubuntu:
     runs-on: self-hosted
     steps:
+      - name: cores check
+        run: nproc   
       - name: clone-repo
         uses: GuillaumeFalourd/clone-github-repo-action@v2
         id: repo
@@ -16,8 +18,21 @@ jobs:
         if: failure() || success()
         run: |
           rm raliku-holdings -R
+
+  vps-operations:
+    needs: repo-ubuntu
+    runs-on: self-hosted
+    steps:
+      - name: Get artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: artifact-build-files
           
-    
+  #     - name: copy code into VPS
+  #       uses: actions/checkout@v3
+  #     - name: some if node_modules is there
+  #       run: ls           
+
              
         
       # - name: Access cloned repository content
