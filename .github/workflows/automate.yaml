@@ -1,23 +1,25 @@
-name: Clone to VPS and run all logics
+name: Deployment
 
-on: push
-jobs:
-    # repo-ubuntu:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: clone-repo
-  #       id: clone-repo
-  #       uses: GuillaumeFalourd/clone-github-repo-action@v2
-  #       with:
-  #         owner: 'anapitalai'
-  #         repository: 'raliku-holdings'
-  #       run: |
-  #           cd raliku-holdings
-  #           npm run build
-  checkout and build:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Get code to the runner
+on: push                    
+jobs:   
+  repo-ubuntu:
+    runs-on: self-hosted
+    steps:    
+      - name: Clone GuillaumeFalourd/poc-github-actions PUBLIC repository
+        uses: GuillaumeFalourd/clone-github-repo-action@v2
+        with:
+          owner: 'anapitalai'
+          repository: 'raliku-holdings'     
+      - name: Access cloned repository content
+        run: |
+          cd raliku-holdings
+
+  
+  build-frontend-files:
+    needs: repo-ubuntu
+    runs-on: ubuntu-latest    
+    steps: 
+    - name: Get code from local to gh runner
       uses: actions/checkout@v3
     - name: Install nodejs 18
       uses: actions/setup-node@v3
@@ -25,8 +27,17 @@ jobs:
         node-version: 18
     - name: Install dependencies
       run: npm ci
-    - name: Run build
-      run: npm run build
+
+
+
+    - name: Copy folder content recursively to remote VPS
+      uses: garygrossgarten/github-action-scp@release
+      with:
+          local: dist
+          remote: /var/www/www.taraka-uc.com/public_html/
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
 
 
 
