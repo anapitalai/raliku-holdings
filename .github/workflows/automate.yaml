@@ -6,13 +6,22 @@ jobs:
     runs-on: self-hosted
     steps:    
       - name: Clone GuillaumeFalourd/poc-github-actions PUBLIC repository
+        id: clone-repo
         uses: GuillaumeFalourd/clone-github-repo-action@v2
         with:
           owner: 'anapitalai'
           repository: 'raliku-holdings'     
       - name: Access cloned repository content
+        if: steps.clone-repo.outcome == 'failure'
         run: |
-          cd raliku-holdings
+          rm raliku-holdings -R
+      - name: re-run clone
+        uses: GuillaumeFalourd/clone-github-repo-action@v2
+        with:
+          owner: 'anapitalai'
+          repository: 'raliku-holdings'
+          run: |
+            cd raliku-holdings
 
   
   build-frontend-files:
