@@ -23,10 +23,10 @@ jobs:
     needs: repo-ubuntu
     runs-on: self-hosted
     steps:
-      -name: browser files
-      run: | 
-       cd /root/git-clones/raliku-holdings
-       ls -lah     
+      - name: browser files
+        run: | 
+         cd /root/git-clones/raliku-holdings
+         ls -lah     
       # - name: Get artifacts
       #   uses: actions/download-artifact@v3
       #   with:
