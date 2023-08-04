@@ -2,23 +2,29 @@ name: Clone to VPS and run all logics
 
 on: push
 jobs:
+
   repo-ubuntu:
     runs-on: self-hosted
     steps:
       - name: cores check
         run: nproc  
       - name: clone-repo
+        id: clone-repo
         uses: GuillaumeFalourd/clone-github-repo-action@v2
-        id: repo
         with:
           owner: 'anapitalai'
-          repository: 'raliku-holdings'
-      
+          repository: 'raliku-holdings'      
       - name: avaiable-repo
         if: failure() || success()
         run: |
           rm raliku-holdings -R
 
+      - name: backend-builds
+        if: steps.clone-repo.outcome == 'success'
+        run: |
+          cd /raliku-holdings
+          npm run build
+          
   vps-operations:
     needs: repo-ubuntu
     runs-on: self-hosted
@@ -28,7 +34,7 @@ jobs:
          cd /root/git-clones/raliku-holdings
          ls -lah
          npm ci
-         npm run build    
+        #  npm run build    
   
       # - name: Get artifacts
       #   uses: actions/download-artifact@v3
