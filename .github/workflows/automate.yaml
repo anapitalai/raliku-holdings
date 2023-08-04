@@ -23,12 +23,12 @@ jobs:
     needs: repo-ubuntu
     runs-on: self-hosted
     steps:
-      -name: browser files
-      run: | 
-       cd /root/git-clones/raliku-holdings
-       ls -lah
-       npm ci
-       npm run build    
+      - name: browser files
+        run: | 
+         cd /root/git-clones/raliku-holdings
+         ls -lah
+         npm ci
+        #  npm run build    
   
       # - name: Get artifacts
       #   uses: actions/download-artifact@v3
