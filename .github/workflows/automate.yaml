@@ -38,10 +38,6 @@ jobs:
     - name: Install dependencies
       run: |
         npm run build
-    - name: avaiable-repo
-      if: steps.collect-runner.outcome == 'failure'
-      run: |
-          rm raliku-holdings -R
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
