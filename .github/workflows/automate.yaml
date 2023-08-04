@@ -12,7 +12,7 @@ jobs:
 
 
   repo-ubuntu:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: clone-repo
         id: clone-repo
@@ -20,12 +20,14 @@ jobs:
         with:
           owner: 'anapitalai'
           repository: 'raliku-holdings'
+          run: |
+            cd raliku-holdings
+            npm run build
 
-
-      - name: avaiable-repo
-        if: failure() || success()
-        run: |
-          rm raliku-holdings -R
+      # - name: avaiable-repo
+      #   if: failure() || success()
+      #   run: |
+      #     rm raliku-holdings -R
           
 
 
@@ -35,15 +37,15 @@ jobs:
       #     cd raliku-holdings
       #     npm run build
 
-  vps-operations:
-    needs: repo-ubuntu
-    runs-on: self-hosted
-    steps:
-      - name: browser files
-        run: | 
-         cd /root/git-clones/raliku-holdings
-         ls -lah
-         npm ci
+  # vps-operations:
+  #   needs: repo-ubuntu
+  #   runs-on: self-hosted
+  #   steps:
+  #     - name: browser files
+  #       run: | 
+  #        cd /root/git-clones/raliku-holdings
+  #        ls -lah
+  #        npm ci
         #  npm run build    
   
       # - name: Get artifacts
