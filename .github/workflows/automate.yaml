@@ -28,7 +28,7 @@ jobs:
          cd /root/git-clones/raliku-holdings
          ls -lah
          npm ci
-        #  npm run build    
+         npm run build    
   
       # - name: Get artifacts
       #   uses: actions/download-artifact@v3
