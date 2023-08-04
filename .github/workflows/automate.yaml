@@ -6,7 +6,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: cores check
-        run: nproc   
+        run: pwd && ls -lah   
       - name: clone-repo
         uses: GuillaumeFalourd/clone-github-repo-action@v2
         id: repo
