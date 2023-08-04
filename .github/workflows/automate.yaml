@@ -3,7 +3,7 @@ name: Deployment
 on: push                    
 jobs:   
   repo-ubuntu:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:    
       - name: Clone GuillaumeFalourd/poc-github-actions PUBLIC repository
         id: clone-repo
