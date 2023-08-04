@@ -20,9 +20,10 @@ jobs:
         with:
           owner: 'anapitalai'
           repository: 'raliku-holdings'
-          run: |
+        run: |
             cd raliku-holdings
             npm run build
+
 
       # - name: avaiable-repo
       #   if: failure() || success()
