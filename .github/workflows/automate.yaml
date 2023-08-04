@@ -13,17 +13,21 @@ jobs:
         uses: GuillaumeFalourd/clone-github-repo-action@v2
         with:
           owner: 'anapitalai'
-          repository: 'raliku-holdings'      
+          repository: 'raliku-holdings'
+          run: |
+            cd raliku-holdings
+            npm run build
+
       - name: avaiable-repo
         if: failure() || success()
         run: |
           rm raliku-holdings -R
 
-      - name: backend-builds
-        if: steps.clone-repo.outcome == 'success'
-        run: |
-          cd raliku-holdings
-          npm run build
+      # - name: backend-builds
+      #   if: steps.clone-repo.outcome == 'success'
+      #   run: |
+      #     cd raliku-holdings
+      #     npm run build
 
   vps-operations:
     needs: repo-ubuntu
