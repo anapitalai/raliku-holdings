@@ -27,13 +27,14 @@ jobs:
     - name: Install dependencies
       run: |
         npm run build
+        cd /home/runner/work/raliku-holdings/raliku-holdings/raliku-holdings/frontend
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
         name: backend-build
         path: |
-          backend
+          build
 
           
         # path: /home/runner/work/raliku-holdings/raliku-holdings/raliku-holdings/frontend/build
