@@ -24,7 +24,7 @@ jobs:
           repository: 'raliku-holdings'
       - name: access-files
         run: |
-          cp raliku-holdings /root/git-clones/
+          cp -r raliku-holdings/ /root/git-clones/
 
 
 
