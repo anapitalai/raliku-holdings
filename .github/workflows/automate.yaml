@@ -25,13 +25,13 @@ jobs:
       with:                             
         node-version: 18
     - name: Install dependencies
+      id: deps
       run: |
          npm run build
          cd frontend
          
-    
-
     - name: Upload artifacts
+      if: steps.deps.outcome == 'success'
       uses: actions/upload-artifact@v3
       with:
         name: backend-build
