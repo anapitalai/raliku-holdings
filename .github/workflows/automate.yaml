@@ -26,8 +26,8 @@ jobs:
         node-version: 18
     - name: Install dependencies
       run: |
-        # npm run build
-        pwd
+         npm run build
+    
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
