@@ -2,17 +2,17 @@ name: Deployment
 
 on: push                    
 jobs:
-# #job1
-#   repo-ubuntu:
-#     runs-on: ubuntu-latest
-#     steps:    
-#       - name: Clone project-repo
-#         id: clone-repo
-#         uses: GuillaumeFalourd/clone-github-repo-action@v2
-#         with:
-#           owner: 'anapitalai'
-#           repository: 'raliku-holdings'
-  ##job2          
+#job1
+  repo-ubuntu:
+    runs-on: ubuntu-latest
+    steps:    
+      - name: Clone project-repo
+        id: clone-repo
+        uses: GuillaumeFalourd/clone-github-repo-action@v2
+        with:
+          owner: 'anapitalai'
+          repository: 'raliku-holdings'
+  #job2          
   clone-whole-project:
     runs-on: self-hosted
     steps:    
@@ -29,30 +29,30 @@ jobs:
           rm raliku-holdings -R    
   
   #job3
-  # build-frontend-files:
-  #   needs: repo-ubuntu
-  #   runs-on: ubuntu-latest    
-  #   steps: 
-  #   - name: collect-code-runner
-  #     id: collect-runner
-  #     uses: actions/checkout@v3
-  #   - name: Install nodejs 18
-  #     uses: actions/setup-node@v3
-  #     with:                             
-  #       node-version: 18
-  #   - name: Install dependencies
-  #     id: deps
-  #     run: |
-  #        npm run build
-  #        cd frontend
+  build-frontend-files:
+    needs: repo-ubuntu
+    runs-on: ubuntu-latest    
+    steps: 
+    - name: collect-code-runner
+      id: collect-runner
+      uses: actions/checkout@v3
+    - name: Install nodejs 18
+      uses: actions/setup-node@v3
+      with:                             
+        node-version: 18
+    - name: Install dependencies
+      id: deps
+      run: |
+         npm run build
+         cd frontend
          
-  #   - name: Upload artifacts
-  #     if: steps.deps.outcome == 'success'
-  #     uses: actions/upload-artifact@v3
-  #     with:
-  #       name: backend-build
-  #       path: |
-  #         frontend/build
+    - name: Upload artifacts
+      if: steps.deps.outcome == 'success'
+      uses: actions/upload-artifact@v3
+      with:
+        name: backend-build
+        path: |
+          frontend/build
  
 
           
