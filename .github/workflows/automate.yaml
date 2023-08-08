@@ -28,15 +28,15 @@ jobs:
       run: |
          npm run build
          cd frontend
-         pwd
+         
     
 
-    # - name: Upload artifacts
-    #   uses: actions/upload-artifact@v3
-    #   with:
-    #     name: backend-build
-    #     path: |
-    #       build
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: backend-build
+        path: |
+          build
 
           
         # path: /home/runner/work/raliku-holdings/raliku-holdings/raliku-holdings/frontend/build
