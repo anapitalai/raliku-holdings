@@ -23,7 +23,7 @@ jobs:
           owner: 'anapitalai'
           repository: 'raliku-holdings'
       - name: access-files
-        uses: |
+        run: |
           cp raliku-holdings /root/git-clones/
 
 
