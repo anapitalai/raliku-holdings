@@ -33,7 +33,6 @@ jobs:
   
   #job3
   build-frontend-files:
-    id: job3
     needs: repo-ubuntu
     runs-on: ubuntu-latest    
     steps: 
