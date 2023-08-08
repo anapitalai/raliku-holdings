@@ -61,7 +61,7 @@ jobs:
         #   backend
         #   frontend
   download-vps:
-    needs: job3
+    needs: repo-ubuntu
     runs-on: self-hosted    
     steps: 
     - name: download-artifacts
