@@ -27,6 +27,7 @@ jobs:
     - name: Install dependencies
       run: |
          npm run build
+         pwd
     
 
     - name: Upload artifacts
