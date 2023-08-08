@@ -27,7 +27,7 @@ jobs:
     - name: Install dependencies
       run: |
         # npm run build
-        cd ls
+        pwd
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
