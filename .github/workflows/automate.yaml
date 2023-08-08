@@ -33,6 +33,7 @@ jobs:
   
   #job3
   build-frontend-files:
+    id: job3
     needs: repo-ubuntu
     runs-on: ubuntu-latest    
     steps: 
@@ -60,6 +61,10 @@ jobs:
         #   package.json
         #   backend
         #   frontend
+  download-vps:
+    needs: job3
+    runs-on: self-hosted    
+    steps: 
     - name: download-artifacts
       uses: actions/download-artifact@v3
       with:
