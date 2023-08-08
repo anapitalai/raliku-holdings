@@ -29,7 +29,7 @@ jobs:
         npm run build
 
     - name: Upload artifacts
-      uses: actions/downlad-artifact@v3
+      uses: actions/upload-artifact@v3
       with:
         name: backend-build
         path: |
