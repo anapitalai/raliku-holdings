@@ -29,9 +29,13 @@ jobs:
         npm run build
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/downlad-artifact@v3
       with:
-        name: artifact-build-files
+        name: backend-build
+        path: |
+          backend
+
+          
         # path: /home/runner/work/raliku-holdings/raliku-holdings/raliku-holdings/frontend/build
 
 
