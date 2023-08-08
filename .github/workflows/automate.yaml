@@ -27,7 +27,7 @@ jobs:
     - name: Install dependencies
       run: |
          npm run build
-         pwd
+         cd /raliku-holdings/frontend
     
 
     - name: Upload artifacts
