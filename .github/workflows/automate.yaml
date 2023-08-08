@@ -26,8 +26,6 @@ jobs:
         run: |
           cp -r raliku-holdings/ /root/git-clones/
 
-
-
       - name: avaiable-repo
         if: failure() || success()
         run: |
@@ -55,7 +53,17 @@ jobs:
       if: steps.deps.outcome == 'success'
       uses: actions/upload-artifact@v3
       with:
-        name: backend-build
+        name: frontend-build
         path: |
           frontend/build
+        # path: |               //multiple files upload
+        #   package.json
+        #   backend
+        #   frontend
+    - name: download-artifacts
+      uses: actions/download-artifact@v3
+      with:
+        - name: frontend-build
+    - name: output artifacts contents
+      run: ls
  
