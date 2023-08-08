@@ -26,8 +26,8 @@ jobs:
         node-version: 18
     - name: Install dependencies
       run: |
-        npm run build
-        cd /home/runner/work/raliku-holdings/raliku-holdings/raliku-holdings/frontend
+        # npm run build
+        cd ls
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
