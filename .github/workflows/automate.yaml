@@ -36,7 +36,7 @@ jobs:
       with:
         name: backend-build
         path: |
-          build
+          frontend/build
 
           
         # path: /home/runner/work/raliku-holdings/raliku-holdings/raliku-holdings/frontend/build
