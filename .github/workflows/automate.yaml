@@ -1,18 +1,33 @@
 name: Deployment
 
 on: push                    
-jobs:   
+jobs:
+#job1
   repo-ubuntu:
     runs-on: ubuntu-latest
     steps:    
-      - name: Clone GuillaumeFalourd/poc-github-actions PUBLIC repository
+      - name: Clone project-repo
         id: clone-repo
         uses: GuillaumeFalourd/clone-github-repo-action@v2
         with:
           owner: 'anapitalai'
-          repository: 'raliku-holdings'     
+          repository: 'raliku-holdings'
+  ##job2          
+  clone-whole-project:
+    runs-on: self-hosted
+    steps:    
+      - name: clone-all
+        id: clone-all
+        uses: GuillaumeFalourd/clone-github-repo-action@v2
+        with:
+          owner: 'anapitalai'
+          repository: 'raliku-holdings'  
 
-
+      # - name: avaiable-repo
+      #   if: failure() || success()
+      #   run: |
+      #     rm raliku-holdings -R    
+  #job3
   build-frontend-files:
     needs: repo-ubuntu
     runs-on: ubuntu-latest    
@@ -37,16 +52,8 @@ jobs:
         name: backend-build
         path: |
           frontend/build
+    ##upload artirfacts
 
-          
-        # path: /home/runner/work/raliku-holdings/raliku-holdings/raliku-holdings/frontend/build
-
-
-
-      # - name: avaiable-repo
-      #   if: failure() || success()
-      #   run: |
-      #     rm raliku-holdings -R
           
 
 
