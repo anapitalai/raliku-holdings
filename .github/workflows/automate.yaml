@@ -21,7 +21,12 @@ jobs:
         uses: GuillaumeFalourd/clone-github-repo-action@v2
         with:
           owner: 'anapitalai'
-          repository: 'raliku-holdings'  
+          repository: 'raliku-holdings'
+      - name: access-files
+        uses: |
+          cp raliku-holdings /root/git-clones/
+
+
 
       - name: avaiable-repo
         if: failure() || success()
