@@ -58,7 +58,7 @@ jobs:
           frontend/build
 
   download-vps:
-    needs: repo-ubuntu
+    needs: frontend-build
     runs-on: self-hosted    
     steps: 
     - name: download-artifacts
