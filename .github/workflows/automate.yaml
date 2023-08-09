@@ -15,12 +15,12 @@ jobs:
       - name: access-files
         run: |
           cp -r raliku-holdings/ /root/git-clones/
-          cd /root/git-clones/
+          cd /root/git-clones/raliku-holdings/
           npm install
 
 
       - name: avaiable-repo
-        if: failure()
+        if: failure() || success()
         run: |
           rm raliku-holdings -R    
 #job2
