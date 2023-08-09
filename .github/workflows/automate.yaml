@@ -25,7 +25,7 @@ jobs:
       - name: access-files
         run: |
           cp -r raliku-holdings/ /root/git-clones/
-          cd /root/git-clones/raliku.holdings
+          cd /root/git-clones/raliku-holdings
           npm ci
 
 
