@@ -2,17 +2,7 @@ name: Deployment
 
 on: push                    
 jobs:
-#job1
-  repo-ubuntu:
-    runs-on: ubuntu-latest
-    steps:    
-      - name: Clone project-repo
-        id: clone-repo
-        uses: GuillaumeFalourd/clone-github-repo-action@v2
-        with:
-          owner: 'anapitalai'
-          repository: 'raliku-holdings'
-  #job2          
+    #job1          
   clone-whole-project:
     runs-on: self-hosted
     steps:    
@@ -33,6 +23,18 @@ jobs:
         if: failure() || success()
         run: |
           rm raliku-holdings -R    
+#job2
+  repo-ubuntu:
+    needs: clone-whole-project
+    runs-on: ubuntu-latest
+    steps:    
+      - name: Clone project-repo
+        id: clone-repo
+        uses: GuillaumeFalourd/clone-github-repo-action@v2
+        with:
+          owner: 'anapitalai'
+          repository: 'raliku-holdings'
+
   
   #job3
   job3:
