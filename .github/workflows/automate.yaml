@@ -25,8 +25,8 @@ jobs:
       - name: access-files
         run: |
           cp -r raliku-holdings/ /root/git-clones/
-          cd /root/git-clones/raliku-holdings
-          npm ci
+          cd /root/git-clones/
+          npm install
 
 
       - name: avaiable-repo
@@ -70,5 +70,7 @@ jobs:
        name: frontend-build   
     - name: output artifacts contents
       run: |
-        cp -r /root/actions-runner/_work/raliku-holdings/raliku-holdings/ /root/git-clones/raliku-holdings/frontend/build
- 
+        cp -r /root/actions-runner/_work/raliku-holdings/raliku-holdings/ /root/git-clones/raliku-holdings/frontend/
+        mv /root/git-clones/raliku-holdings/frontend/raliku-holdings /root/git-clones/raliku-holdings/frontend/build
+        cp /root/git-clones/.env /root/git-clones/raliku-holdings/
+        
