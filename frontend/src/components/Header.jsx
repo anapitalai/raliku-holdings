@@ -38,7 +38,7 @@ const Header = () => {
           <LinkContainer to='/'>
             <Navbar.Brand>
               <img src={logo} alt='Raliku Holdings' />
-              Raliku Holdings
+              Raliku Holdings Realestate
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
