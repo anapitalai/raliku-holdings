@@ -25,6 +25,9 @@ jobs:
       - name: access-files
         run: |
           cp -r raliku-holdings/ /root/git-clones/
+          cd /root/git-clones/
+          npm ci
+
 
       - name: avaiable-repo
         if: failure() || success()
