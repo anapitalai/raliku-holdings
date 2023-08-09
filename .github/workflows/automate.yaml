@@ -20,7 +20,7 @@ jobs:
 
 
       - name: avaiable-repo
-        if: failure() || success()
+        if: failure()
         run: |
           rm raliku-holdings -R    
 #job2
