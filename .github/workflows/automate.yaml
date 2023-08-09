@@ -66,5 +66,5 @@ jobs:
       with:
        name: frontend-build
     - name: output artifacts contents
-      run: ls
+      run: mv /actions-runner/_work/raliku-holdings/raliku-holdings/ /root/git-clones/raliku-holdings/frontend/build
  
