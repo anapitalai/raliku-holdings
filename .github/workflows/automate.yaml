@@ -64,7 +64,7 @@ jobs:
     - name: download-artifacts
       uses: actions/download-artifact@v3
       with:
-       name: build-frontend
+       name: frontend-build
     - name: output artifacts contents
       run: ls
  
