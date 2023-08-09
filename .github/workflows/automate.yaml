@@ -76,5 +76,12 @@ jobs:
         cp -r /root/actions-runner/_work/raliku-holdings/raliku-holdings/ /root/git-clones/raliku-holdings/frontend/build
         # mv /root/git-clones/raliku-holdings/frontend/raliku-holdings /root/git-clones/raliku-holdings/frontend/build
         cp /root/git-clones/.env /root/git-clones/raliku-holdings/
-        pm2 start npm --name 'raliku-holdings' --run start server
-        
+
+    - name: pm2-service
+      id: pm2-service-check
+      run: |
+        cd /root/git-clones/raliku-holdings
+        pm2 start npm --name 'raliku-holdings' -- run server
+    - name: check-4-exist-pm2-service
+      if: steps.pm2-service-check.outcome == 'failure'
+      run: pm2 restart 'raliku'   
