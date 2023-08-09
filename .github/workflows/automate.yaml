@@ -32,7 +32,7 @@ jobs:
           rm raliku-holdings -R    
   
   #job3
-  build-frontend:
+  job3:
     needs: repo-ubuntu
     runs-on: ubuntu-latest    
     steps: 
@@ -58,7 +58,7 @@ jobs:
           frontend/build
 
   download-vps:
-    needs: frontend-build
+    needs: job3
     runs-on: self-hosted    
     steps: 
     - name: download-artifacts
