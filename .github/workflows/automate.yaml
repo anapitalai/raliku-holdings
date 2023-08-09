@@ -67,5 +67,5 @@ jobs:
        name: frontend-build   
     - name: output artifacts contents
       run: |
-        cp -r /actions-runner/_work/raliku-holdings/raliku-holdings/ /root/git-clones/raliku-holdings/frontend/build
+        cp -r /root/actions-runner/_work/raliku-holdings/raliku-holdings/ /root/git-clones/raliku-holdings/frontend/build
  
